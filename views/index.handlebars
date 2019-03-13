@@ -1,0 +1,10 @@
+<div class="col-md-4">
+    {{#each burger}}
+    {{#unless this.devoured}}
+    <ul class="list-group">
+        <li class="list group-item list-group-item-info">
+            {{this.id}}.{{this.burger_name}}
+        </li>
+        <a href="#"data-burgerId ="{{this.id}}" class="btn btn-primary devourBurger">Devour</a>
+    </ul>
+</div>

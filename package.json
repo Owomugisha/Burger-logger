@@ -1,0 +1,27 @@
+{
+  "name": "burger-logger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Owomugisha/Burger-logger.git"
+  },
+  "author": "birungi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Owomugisha/Burger-logger/issues"
+  },
+  "homepage": "https://github.com/Owomugisha/Burger-logger#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "mysql": "^2.16.0",
+    "orm": "^5.0.4",
+    "package-json": "^6.1.0"
+  }
+}
