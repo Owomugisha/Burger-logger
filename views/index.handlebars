@@ -4,35 +4,44 @@
   <br>
 
   <div class="row">
-    <div class="col-sm-4">
+
+
+    <div class="col-sm-6">
       {{!-- <div class="coloredDiv">Burgers Ordered</div> --}}
       <ul class="list-group">
         {{#each burgers}}
         {{#unless devoured}}
-
-        <li class="list-group-item list-group-item-primary font-italic burgerBtn">
-          <div class="row">
-            <div class="col-md-12">
+        <div class="row">
+          <li class="col-md-8 list-group-item list-group-item-primary font-italic burgerBtn">
               {{id}}. <strong> {{burger_name}}</strong>
+          </li>
+            <button class="col-md-3 change-devoured right burgerId btn btn-danger" data-id="{{id}}"
+                data-newdevoured="{{devoured}}">Devour it!</button>
+        </div>
+        {{!-- <li class="list-group-item list-group-item-primary font-italic burgerBtn">
+
+          <div class="row">
+
+            <div class="col-md-9">
+              
             </div>
 
 
+            <div class="col-md-3">
+              
+            </div>
+
           </div>
 
-        </li>
-        <div>
-          <button class="change-devoured pull-right burgerId btn btn-danger" data-id="{{id}}"
-            data-newdevoured="{{devoured}}">Devour it!</button>
-        </div>
+        </li> --}}
         <br>
         {{/unless}}
         {{/each}}
       </ul>
-
     </div>
 
 
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       {{!-- <div class="coloredDiv">Burgers Devoured</div> --}}
       <ul class="list-group">
         {{#each burgers}}
@@ -52,6 +61,7 @@
         {{/each}}
       </ul>
     </div>
+    
   </div>
   <br>
 
