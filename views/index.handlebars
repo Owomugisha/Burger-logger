@@ -1,10 +1,99 @@
-<div class="col-md-4">
-    {{#each burger}}
-    {{#unless this.devoured}}
-    <ul class="list-group">
-        <li class="list group-item list-group-item-info">
-            {{this.id}}.{{this.burger_name}}
+<div class="container">
+
+
+  <br>
+
+  <div class="row">
+    <div class="col-sm-4">
+      {{!-- <div class="coloredDiv">Burgers Ordered</div> --}}
+      <ul class="list-group">
+        {{#each burgers}}
+        {{#unless devoured}}
+
+        <li class="list-group-item list-group-item-primary font-italic burgerBtn">
+          <div class="row">
+            <div class="col-md-12">
+              {{id}}. <strong> {{burger_name}}</strong>
+            </div>
+
+
+          </div>
+
         </li>
-        <a href="#"data-burgerId ="{{this.id}}" class="btn btn-primary devourBurger">Devour</a>
-    </ul>
+        <div>
+          <button class="change-devoured pull-right burgerId btn btn-danger" data-id="{{id}}"
+            data-newdevoured="{{devoured}}">Devour it!</button>
+        </div>
+        <br>
+        {{/unless}}
+        {{/each}}
+      </ul>
+
+    </div>
+
+
+    <div class="col-sm-4">
+      {{!-- <div class="coloredDiv">Burgers Devoured</div> --}}
+      <ul class="list-group">
+        {{#each burgers}}
+        {{#if devoured}}
+        <li class="list-group-item list-group-item-danger font-italic font-weight-light">
+          <div class="row">
+            <div class="col-md-12">
+              {{id}}. <strong> {{burger_name}}</strong>
+            </div>
+            {{!-- <div class="col-md-6">
+            <button class="change-devoured pull-right btn btn-info" data-id="{{id}}" data-newdevoured="{{devoured}}" disabled >Devoured</button>
+          </div> --}}
+          </div>
+        </li>
+        <br>
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <br>
+
+  <div class="row">
+    <div class="col-sm-12">
+      {{!-- <div class="coloredDiv">Order a Burger to add</div> --}}
+      <form class="create-form center" action="/addB" method="POST">
+        <div class="form-group">
+          {{!-- <label style="font-size:20px" for="burger"></label> --}}
+          <center>
+            <input class="burgerbtn" type="text" id="burger" name="burger_name">
+            <button type="submit" class="btn btn-primary">Add Burger</button>
+        </div>
+        <center>
+          <div>Enter a burger you want to eat and click <strong>Submit</strong> button</div>
+        </center>
+        </center>
+      </form>
+    </div>
+  </div>
+
 </div>
+
+<script>
+  $(document).ready(function () {
+
+    $(document).on('click', '.burgerId', function () {
+      var dataId = $(this).attr('data-id');
+
+      fetch('/updateBurger', {
+        method: 'PUT',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ burger_id: dataId })
+      })
+        .then(response => response.json())
+        .then(data => {
+          location.reload();
+        })
+
+    })
+  })
+
+</script>

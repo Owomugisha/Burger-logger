@@ -1,5 +1,5 @@
+drop database burger_db;
 create database burger_db;
-drop table if exists burgers;
 use burger_db;
 create table burgers(
     id int not null auto_increment,

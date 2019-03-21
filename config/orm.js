@@ -47,7 +47,7 @@ var orm = {
       if (err) {
         throw err;
       }
-      processResults(results);
+      processResults(result);
     });
   },
   insertOne: function(table, cols, vals, processResults) {
@@ -60,7 +60,7 @@ var orm = {
     queryString += printQuestionMarks(vals.length);
     queryString += ") ";
 
-    console.log(queryString);
+    console.log("INSERTING QUERY", queryString);
 
     connection.query(queryString, vals, function(err, result) {
       if (err) {
@@ -71,7 +71,7 @@ var orm = {
     });
   },
   // An example of objColVals would be {name: panther, sleepy: true}
-  update: function(tableName, objColVals, condition, processResults) {
+  updateOne: function(tableName, objColVals, condition, processResults) {
     var queryString = "UPDATE " + tableName;
 
     queryString += " SET ";
